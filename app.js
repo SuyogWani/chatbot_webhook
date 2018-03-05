@@ -10,7 +10,7 @@ app.use(bodyparser.urlencoded({
 }))
 app.use(bodyparser.json());
 
-app.get('/webhook', (req, res) => {
+app.post('/webhook', (req, res) => {
 	let data = req.data;
 	let response;
 	let action = data.result.action ? data.result.action : '';
