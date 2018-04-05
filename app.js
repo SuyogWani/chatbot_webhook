@@ -14,13 +14,11 @@ app.post('/webhook', (req, res) => {
 	let data = req.body;
 	let response;
 	let action = data.result.action ? data.result.action : '';
-	console.log("DATA: "+ data);
 
 	switch(action){
 		case('get-weather'):
 			let geocity = data.result.parameters['geo-city'] ? data.result.parameters['geo-city'] : 'Berlin';
 			weather.getWeather(geocity, response => {
-				console.log("Response:"+ response);
 				return res.json({
 					speech: response,
 					displayText: response,
